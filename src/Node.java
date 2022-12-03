@@ -20,21 +20,24 @@ class Container{
 
 public class Node {
 
+    int m; //m원 Btree
     int n;  // 현 keys 배열에 key 가 몇개 있는지
     int[] keys;  // 현 노드의 key 들을 담은 배열
     Node[] pointers; // 현 노드의 pointer 들을 담은 배열
     boolean emptyTree; //빈 트리인지 확인용
 
     //생성자 (새 노드 또는 루트 만들 때 사용할 예정)
-    Node(boolean emptyTree){
+    Node(boolean emptyTree, int m){
+        this.m = m;
         this.n = 0;
-        this.keys = new int[3]; //3원 트리
-        this.pointers = new Node[4];  //pointer는 keys 보다 1개 더 많아야함
+        this.keys = new int[m]; //3원 트리
+        this.pointers = new Node[m+1];  //pointer는 keys 보다 1개 더 많아야함
         this.emptyTree = emptyTree;  //빈트리 표시
     }
 
     //생성자 (깊은 복사할 때 사용할 예정)
-    Node(int n, int[] keys, Node[] pointers){
+    Node(int m, int n, int[] keys, Node[] pointers){
+        this.m = m;
         this.n = n;
         this.keys = keys.clone();  //배열 깊은 복사
         this.pointers = pointers.clone();  //배열 깊은 복사
@@ -156,8 +159,8 @@ public class Node {
         Node curNode = container.stack.pop();
 
 
-        Node split_L_Node = new Node(false);
-        Node split_R_Node = new Node(false);
+        Node split_L_Node = new Node(false, curNode.m);
+        Node split_R_Node = new Node(false, curNode.m);
 
         boolean child_overflow = false;
 
@@ -186,7 +189,7 @@ public class Node {
 
                 //overflow가 루트에서 일어난 경우
                 if(container.stack.isEmpty()){
-                    Node newRoot = new Node(false); //빈 트리가 아님
+                    Node newRoot = new Node(false, curNode.m); //빈 트리가 아님
 
                     //newRoot 생성
                     newRoot.n = 1;
@@ -224,7 +227,7 @@ public class Node {
     void splitNode(int m, Node curNode, int newKey, Container container, Node nK_L_Node, Node nK_R_Node){
 
         //tempNode 에 curNode 를 깊은 복사
-        Node tempNode = new Node(curNode.n, curNode.keys, curNode.pointers);
+        Node tempNode = new Node(curNode.m, curNode.n, curNode.keys, curNode.pointers);
 
         //tempNode 에 newKey 일단 삽입하고 split 한다는 마인드.
         insertKey(m, tempNode, newKey, nK_L_Node, nK_R_Node);
@@ -234,8 +237,8 @@ public class Node {
 
 
         //midKey를 기준으로 split 하기
-        Node split_L_Node = new Node(false);
-        Node split_R_Node = new Node(false);
+        Node split_L_Node = new Node(false, curNode.m);
+        Node split_R_Node = new Node(false, curNode.m);
 
 
 
@@ -269,7 +272,7 @@ public class Node {
 
 
     public static void main(String[] args) {
-        Node root = new Node(true); //빈트리
+        Node root = new Node(true, 3); //빈트리
         root.insertBT(3, 25);
         inorderBT(root, 3);
         System.out.println();
