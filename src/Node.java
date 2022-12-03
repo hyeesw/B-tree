@@ -59,7 +59,7 @@ public class Node {
         else{
             int i=0;
             while(i< curNode.n+1){
-                inorderBT(curNode.pointers[i], 3); //현재키값의 왼쪽 포인터 노드로 이동 (포인터는 n+1개)
+                inorderBT(curNode.pointers[i], curNode.m); //현재키값의 왼쪽 포인터 노드로 이동 (포인터는 n+1개)
                 if(i < curNode.n) System.out.print(curNode.keys[i] + " "); //현재 키값 (키는 n개이고)
 
                 i++;
@@ -198,8 +198,8 @@ public class Node {
                     newRoot.pointers[1] = split_R_Node;
 
                     //this 배열 초기화
-                    this.keys = new int[3];
-                    this.pointers = new Node[4];
+                    this.keys = new int[curNode.m];
+                    this.pointers = new Node[curNode.m+1];
 
                     //루트 노드(this)를 newRoot 로 갱신
                     this.n = newRoot.n;
@@ -272,70 +272,132 @@ public class Node {
 
 
     public static void main(String[] args) {
-        Node root = new Node(true, 3); //빈트리
-        root.insertBT(3, 25);
-        inorderBT(root, 3);
+//        Node root = new Node(true, 3); //빈트리
+//        root.insertBT(3, 25);
+//        inorderBT(root, 3);
+//        System.out.println();
+//        root.insertBT(3, 500);
+//        inorderBT(root, 3);
+//        System.out.println();
+//        root.insertBT(3, 33);
+//        inorderBT(root, 3);
+//        System.out.println();
+//        root.insertBT(3, 49);
+//        inorderBT(root, 3);
+//        System.out.println();
+//        root.insertBT(3, 17);
+//        inorderBT(root, 3);
+//        System.out.println();
+//        root.insertBT(3, 403);
+//        inorderBT(root, 3);
+//        System.out.println();
+//        root.insertBT(3, 29);
+//        inorderBT(root, 3);
+//        System.out.println();
+//        root.insertBT(3, 105);
+//        inorderBT(root, 3);
+//        System.out.println();
+//        root.insertBT(3, 39);
+//        inorderBT(root, 3);
+//        System.out.println();
+//        root.insertBT(3, 66);
+//        inorderBT(root, 3);
+//        System.out.println();
+//        root.insertBT(3, 305);
+//        inorderBT(root, 3);
+//        System.out.println();
+//        root.insertBT(3, 44);
+//        inorderBT(root, 3);
+//        System.out.println();
+//
+//        root.insertBT(3, 19);
+//        inorderBT(root, 3);
+//        System.out.println();
+//        root.insertBT(3, 441);
+//        inorderBT(root, 3);
+//        System.out.println();
+//        root.insertBT(3, 390);
+//        inorderBT(root, 3);
+//        System.out.println();
+//        root.insertBT(3, 12);
+//        inorderBT(root, 3);
+//        System.out.println();
+//        root.insertBT(3, 81);
+//        inorderBT(root, 3);
+//        System.out.println();
+//        root.insertBT(3, 50);
+//        inorderBT(root, 3);
+//        System.out.println();
+//        root.insertBT(3, 100);
+//        inorderBT(root, 3);
+//        System.out.println();
+//        root.insertBT(3, 999);
+//        inorderBT(root, 3);
+//        System.out.println();
+
+
+        Node root = new Node(true, 4); //빈트리
+        root.insertBT(4, 25);
+        inorderBT(root, 4);
         System.out.println();
-        root.insertBT(3, 500);
-        inorderBT(root, 3);
+        root.insertBT(4, 500);
+        inorderBT(root, 4);
         System.out.println();
-        root.insertBT(3, 33);
-        inorderBT(root, 3);
+        root.insertBT(4, 33);
+        inorderBT(root, 4);
         System.out.println();
-        root.insertBT(3, 49);
-        inorderBT(root, 3);
+        root.insertBT(4, 49);
+        inorderBT(root, 4);
         System.out.println();
-        root.insertBT(3, 17);
-        inorderBT(root, 3);
+        root.insertBT(4, 17);
+        inorderBT(root, 4);
         System.out.println();
-        root.insertBT(3, 403);
-        inorderBT(root, 3);
+        root.insertBT(4, 403);
+        inorderBT(root, 4);
         System.out.println();
-        root.insertBT(3, 29);
-        inorderBT(root, 3);
+        root.insertBT(4, 29);
+        inorderBT(root, 4);
         System.out.println();
-        root.insertBT(3, 105);
-        inorderBT(root, 3);
+        root.insertBT(4, 105);
+        inorderBT(root, 4);
         System.out.println();
-        root.insertBT(3, 39);
-        inorderBT(root, 3);
+        root.insertBT(4, 39);
+        inorderBT(root, 4);
         System.out.println();
-        root.insertBT(3, 66);
-        inorderBT(root, 3);
+        root.insertBT(4, 66);
+        inorderBT(root, 4);
         System.out.println();
-        root.insertBT(3, 305);
-        inorderBT(root, 3);
+        root.insertBT(4, 305);
+        inorderBT(root, 4);
         System.out.println();
-        root.insertBT(3, 44);
-        inorderBT(root, 3);
+        root.insertBT(4, 44);
+        inorderBT(root, 4);
         System.out.println();
 
-        root.insertBT(3, 19);
-        inorderBT(root, 3);
+        root.insertBT(4, 19);
+        inorderBT(root, 4);
         System.out.println();
-        root.insertBT(3, 441);
-        inorderBT(root, 3);
+        root.insertBT(4, 441);
+        inorderBT(root, 4);
         System.out.println();
-        root.insertBT(3, 390);
-        inorderBT(root, 3);
+        root.insertBT(4, 390);
+        inorderBT(root, 4);
         System.out.println();
-        root.insertBT(3, 12);
-        inorderBT(root, 3);
+        root.insertBT(4, 12);
+        inorderBT(root, 4);
         System.out.println();
-        root.insertBT(3, 81);
-        inorderBT(root, 3);
+        root.insertBT(4, 81);
+        inorderBT(root, 4);
         System.out.println();
-        root.insertBT(3, 50);
-        inorderBT(root, 3);
+        root.insertBT(4, 50);
+        inorderBT(root, 4);
         System.out.println();
-        root.insertBT(3, 100);
-        inorderBT(root, 3);
+        root.insertBT(4, 100);
+        inorderBT(root, 4);
         System.out.println();
-        root.insertBT(3, 999);
-        inorderBT(root, 3);
+        root.insertBT(4, 999);
+        inorderBT(root, 4);
         System.out.println();
-
-
 
 
     }
