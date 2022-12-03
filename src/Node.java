@@ -52,13 +52,16 @@ public class Node {
                 System.out.print(curNode.keys[i] + " ");
             }
         }
-        // 내부노드인 경우 key 값들의 자식들을 재귀적으로 부른다.
-        int i=0;
-        while(!isLeaf && i<curNode.n){
-            inorderBT(curNode.pointers[i], 3);
-            i++;
-        }
+        // 루트 또는 내부노드인 경우 key 값들의 자식들을 재귀적으로 부른다.
+        else{
+            int i=0;
+            while(i< curNode.n+1){
+                inorderBT(curNode.pointers[i], 3); //현재키값의 왼쪽 포인터 노드로 이동 (포인터는 n+1개)
+                if(i < curNode.n) System.out.print(curNode.keys[i] + " "); //현재 키값 (키는 n개이고)
 
+                i++;
+            }
+        }
     }
 
     //현 노드가 꽉 차있지 않을 때 newKey를 현 노드에 삽입하는 알고리즘
